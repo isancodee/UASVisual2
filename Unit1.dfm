@@ -25,6 +25,14 @@ object Form1: TForm1
       Caption = 'Data Guru'
       OnClick = DataGuru1Click
     end
+    object DataWaliKelas1: TMenuItem
+      Caption = 'Data Wali Kelas'
+      OnClick = DataWaliKelas1Click
+    end
+    object User1: TMenuItem
+      Caption = 'User'
+      OnClick = User1Click
+    end
   end
   object ZConnection1: TZConnection
     ControlsCodePage = cGET_ACP

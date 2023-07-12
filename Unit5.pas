@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZDataset, Grids,
-  DBGrids, StdCtrls;
+  DBGrids, StdCtrls, ExtCtrls, frxClass, frxDBSet;
 
 type
   TForm5 = class(TForm)
@@ -33,6 +33,10 @@ type
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
     ZQuery1: TZQuery;
+    Panel1: TPanel;
+    Button1: TButton;
+    frxReport1: TfrxReport;
+    frxDBDataset1: TfrxDBDataset;
     procedure btn1Click(Sender: TObject);
     procedure bersih;
     procedure posisiawal;
@@ -42,6 +46,7 @@ type
     procedure btn5Click(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -121,7 +126,7 @@ begin
       end else
         begin
          ZQuery1.SQL.Clear;
-         ZQuery1.SQL.Add('insert into siswa user(null,"'+edt1.Text+'","'+edt2.Text+'","'+edt3.Text+'","'+edt4.Text+'","'+edt5.Text+'","'+edt6.Text+'","'+edt7.Text+'","'+edt8.Text+'")');
+         ZQuery1.SQL.Add('insert into user values(null,"'+edt1.Text+'","'+edt2.Text+'","'+edt3.Text+'","'+edt4.Text+'","'+edt5.Text+'","'+edt6.Text+'","'+edt7.Text+'","'+edt8.Text+'")');
          ZQuery1.ExecSQL;
 
          ZQuery1.SQL.Clear;
@@ -156,18 +161,22 @@ end;
 
 procedure TForm5.btn4Click(Sender: TObject);
 begin
-   if MessageDlg('APAKAH YAKIN MENGHAPUS DATA INI ?',mtWarning,[mbYes,mbNo],0)= mryes then
-      begin
-         ZQuery1.SQL.Clear;
-         ZQuery1.SQL.Add('delete from username where(id)="'+id+'"');
-         ZQuery1.ExecSQL;
+    if MessageDlg('Apakah Yakin Ingin Menghapus Data Ini?',mtWarning,[mbYes,mbNo],0)=mryes then
+    begin
+    ZQuery1.SQL.Clear;
+    ZQuery1.SQL.Add('delete from user where iduser="'+id+'"');
+    ZQuery1.ExecSQL;
 
-         ZQuery1.SQL.Clear;
-         ZQuery1.SQL.Add('select * from username');
-         ZQuery1.Open;
-      end;
-   ShowMessage('Data batal dihapus');
-   posisiawal;
+    ZQuery1.SQL.Clear;
+    ZQuery1.SQL.Add('SELECT * from user');
+    ZQuery1.Open;
+    ShowMessage('DATA BERHASIL DIHAPUS');
+    posisiawal;
+    end else
+  begin
+    ShowMessage('Data Batal Dihapus');
+    posisiawal;
+  end;
 end;
 
 procedure TForm5.btn5Click(Sender: TObject);
@@ -205,6 +214,11 @@ end;
 procedure TForm5.FormCreate(Sender: TObject);
 begin
      posisiawal;
+end;
+
+procedure TForm5.Button1Click(Sender: TObject);
+begin
+frxReport1.ShowReport();
 end;
 
 end.

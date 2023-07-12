@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 282
-  Top = 160
-  Width = 503
+  Left = 327
+  Top = 144
+  Width = 540
   Height = 540
   Caption = 'Form1'
   Color = clBtnFace
@@ -15,14 +15,14 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object MainMenu1: TMainMenu
-    Left = 48
-    Top = 40
+    Left = 120
+    Top = 144
     object DataSiswa1: TMenuItem
       Caption = 'Data Siswa'
       OnClick = DataSiswa1Click
     end
     object DataGuru1: TMenuItem
-      Caption = 'Data Guru'
+      Caption = 'Data Orang Tua'
       OnClick = DataGuru1Click
     end
     object DataWaliKelas1: TMenuItem
@@ -32,6 +32,22 @@ object Form1: TForm1
     object User1: TMenuItem
       Caption = 'User'
       OnClick = User1Click
+    end
+    object Kelas1: TMenuItem
+      Caption = 'Kelas'
+      OnClick = Kelas1Click
+    end
+    object Poin1: TMenuItem
+      Caption = 'Poin'
+      OnClick = Poin1Click
+    end
+    object Hubungan1: TMenuItem
+      Caption = 'Hubungan'
+      OnClick = Hubungan1Click
+    end
+    object Semester1: TMenuItem
+      Caption = 'Semester'
+      OnClick = Semester1Click
     end
   end
   object ZConnection1: TZConnection
@@ -47,7 +63,7 @@ object Form1: TForm1
     LibraryLocation = 
       'C:\Users\Muhammad Al-Iksan\Documents\semester 4\Visual2\Tugas UA' +
       'S\Zeos703\libmysql.dll'
-    Left = 128
-    Top = 40
+    Left = 352
+    Top = 144
   end
 end
